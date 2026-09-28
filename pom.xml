@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Aggregator for every lesson. Open this folder in IntelliJ (File > Open > aulas)
+  and each lesson is imported as a Maven module. Each lesson's pom stays standalone,
+  so a lesson folder can also be opened or built on its own.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>aulas</groupId>
+  <artifactId>aulas</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <name>Aulas</name>
+
+  <modules>
+    <module>tdd/tdd-sob-carga</module>
+  </modules>
+</project>

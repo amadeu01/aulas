@@ -80,9 +80,10 @@ git checkout main              # estado final completo
 │   ├── java-24.md                  # o que a aula usa do Java 24
 │   ├── referencias.md
 │   └── slides-e-notas.md           # texto de todos os slides com as notas do apresentador
-├── slides/README.md                # onde estão os slides e como exportar
-└── .github/workflows/ci.yml        # mvn test em JDK 24 e 25
+└── slides/README.md                # onde estão os slides e como exportar
 ```
+
+O CI fica na raiz do repositório `aulas` (`.github/workflows/tdd-sob-carga.yml`) e roda os testes em JDK 24 e 25.
 
 ## Da regra de produto ao código
 

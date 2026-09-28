@@ -1,0 +1,29 @@
+# Build output
+target/
+build/
+out/
+bin/
+.gradle/
+*.class
+
+# Test tooling
+.jqwik-database
+
+# IntelliJ (shared run configurations live in .run/ and are kept)
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Other IDEs
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
