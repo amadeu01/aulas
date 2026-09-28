@@ -42,8 +42,8 @@ Marque `[x]` a cada teste verde. Caso novo que aparecer vai para a lista, não d
 - [x] conflicting signals alert the coach (mock)
 
 ## Robustness
-- [ ] property: roundDown stays within one plate
-- [ ] property: higher RPE never suggests more load
+- [x] property: roundDown stays within one plate
+- [x] property: higher RPE never suggests more load
 
 ## Ideas for later (not done in class)
 - [ ] reject RPE outside 1..10
