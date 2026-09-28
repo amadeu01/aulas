@@ -5,7 +5,7 @@ Vocabulário baseado em dois textos de Martin Fowler:
 - [Mocks Aren't Stubs](https://martinfowler.com/articles/mocksArentStubs.html)
 - [TestDouble](https://martinfowler.com/bliki/TestDouble.html) (o termo "test double" é de Gerard Meszaros)
 
-Todos os exemplos estão em `src/test/java/dojo/progression/WeeklyPlanServiceTest.java` (tag `rodada-6-colaboradores`).
+Todos os exemplos estão em `src/test/java/dojo/progression/WeeklyPlanServiceTest.java` (branch `aula-tdd-6`).
 
 ## Anatomia de um teste
 

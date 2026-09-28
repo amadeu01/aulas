@@ -40,33 +40,36 @@ No Windows, use `..\..\mvnw.cmd`. Com o Maven instalado, `mvn` no lugar de `../.
 
 Bytecode compilado para 24 (class file 68) não roda numa JVM 21: `UnsupportedClassVersionError`.
 
-## O caminho da aula no histórico do git
+## O caminho da aula em branches
 
-Cada rodada do dojo tem uma tag com o **estado esperado** ao final dela. Use as tags como gabarito ou como resgate: se uma rodada estourar o tempo, faça checkout da tag e siga.
+Cada etapa do dojo tem uma branch com o **estado esperado** ao final dela. Uma branch nasce da anterior, então `git log` mostra a evolução passo a passo e `git diff aula-tdd-2 aula-tdd-3` mostra só o que uma rodada acrescentou. Use as branches para mostrar a evolução, como gabarito ou como resgate: se uma rodada estourar o tempo, troque de branch e siga.
 
-| Tag | Rodada | O que existe |
+| Branch | Etapa | O que existe |
 |---|---|---|
-| `inicio` | Ponto de partida da turma | Contrato (records e interface), teste de fumaça, `TEST-LIST.md` vazio |
-| `rodada-2-anilhas` | Arredondar para as anilhas | `Plates` e `PlatesTest` |
-| `rodada-3-rpe` | O RPE ajusta a carga | `RpeRule`, `Loads` (correção do bug do `double`) e teste parametrizado |
-| `rodada-4-fadiga` | A fadiga corta o volume | `FatigueRule`, `ReadinessRule` e o teste da borda de 30% |
-| `rodada-5-fases` | A competição está chegando | `Phase` (sealed + switch com `_`) e a exceção do terra |
-| `motor` | Entregue pronto antes da rodada 6 | `RuleBasedEngine` e o teste de aceitação do ticket |
-| `rodada-6-colaboradores` | O serviço e as bordas | `WeeklyPlanService`, portas e os cinco dublês de teste (dummy, stub, fake, spy, mock) |
-| `robustez` | A lógica está robusta? | Testes de propriedade com jqwik e PIT configurado |
-
-A rodada 1 é de planejamento: a turma decide todos os testes no [`TEST-LIST.md`](TEST-LIST.md), sem escrever código.
+| `aula-tdd-beginning` | Ponto de partida | [`REGRAS-DE-NEGOCIO.md`](REGRAS-DE-NEGOCIO.md), contrato (records e interface), teste de fumaça, `TEST-LIST.md` vazio |
+| `aula-tdd-1` | Rodada 1 · Planejamento | `TEST-LIST.md` com todos os testes planejados, nenhum código de regra |
+| `aula-tdd-2` | Rodada 2 · Anilhas | `Plates` e `PlatesTest` |
+| `aula-tdd-3` | Rodada 3 · RPE | `RpeRule`, `Loads` (correção do bug do `double`) e teste parametrizado |
+| `aula-tdd-4` | Rodada 4 · Fadiga | `FatigueRule`, `ReadinessRule` e o teste da borda de 30% |
+| `aula-tdd-5` | Rodada 5 · Fases | `Phase` (sealed + switch com `_`) e a exceção do terra |
+| `aula-tdd-6` | Rodada 6 · Colaboradores | 1º commit: `RuleBasedEngine`, teste de aceitação e `Main` (entregues prontos); 2º commit: `WeeklyPlanService`, portas e os cinco dublês de teste |
+| `aula-tdd-7` | Robustez | Testes de propriedade com jqwik e PIT; igual ao `main` |
 
 ```bash
-git checkout inicio            # comece a aula daqui
-git checkout rodada-3-rpe      # resgate: pule para o fim da rodada 3
-git checkout main              # estado final completo
+git switch aula-tdd-beginning   # comece a aula daqui
+git switch aula-tdd-3           # resgate: pule para o fim da rodada 3
+git switch main                 # estado final completo
 ```
+
+No IntelliJ, troque de branch pelo widget de Git no alto à esquerda (ou **Git › Branches**). Todas as branches abrem do mesmo jeito: pom da raiz, Java 24 e as configurações de execução.
+
+As tags antigas (`tdd-sob-carga/inicio` … `tdd-sob-carga/robustez`) continuam no repositório com o código original em Java 21.
 
 ## Estrutura
 
 ```
 ├── README.md
+├── REGRAS-DE-NEGOCIO.md            # o ticket e as regras combinadas com o produto
 ├── TEST-LIST.md                    # a lista de testes (rodada 1), marcada a cada verde
 ├── pom.xml                         # Java 24, JUnit 5, AssertJ, Mockito, jqwik, PIT
 ├── src/main/java/dojo/progression  # código de produção (regras puras, motor, serviço, portas e Main)

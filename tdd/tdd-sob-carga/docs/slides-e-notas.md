@@ -1167,7 +1167,7 @@ final class RuleBasedEngine implements ProgressionEngine {
 ```
 
 > **Notas:** O QUE ESTE SLIDE QUER DIZER: O estado final: uma classe que só junta as regras já testadas. Como cada regra tem os próprios testes, o motor precisa só de um teste de aceitação, que lê como o ticket.
-> COMO CONDUZIR: Cole este código pronto (tag motor) antes da rodada 6: ele só compõe as regras que a turma já testou, e a rodada 6 vai usá-lo como colaborador REAL do serviço. Ele só compõe regras já testadas, então o teste de aceitação é um só. Exemplo pronto para ditar: dado SetLog(SQUAT, 150, 5, 3, 8.0, 35.0), prontidão 4 e 5 semanas até a prova, espera-se Prescription(SQUAT, 152.5, 4, 3). Conta: RPE 8 → 150 × 1,025 = 153,75 → arredonda para 152,5; prontidão 4 mantém; perda de 35% tira uma série (5 → 4).
+> COMO CONDUZIR: Cole este código pronto (1º commit da branch aula-tdd-6) antes da rodada 6: ele só compõe as regras que a turma já testou, e a rodada 6 vai usá-lo como colaborador REAL do serviço. Ele só compõe regras já testadas, então o teste de aceitação é um só. Exemplo pronto para ditar: dado SetLog(SQUAT, 150, 5, 3, 8.0, 35.0), prontidão 4 e 5 semanas até a prova, espera-se Prescription(SQUAT, 152.5, 4, 3). Conta: RPE 8 → 150 × 1,025 = 153,75 → arredonda para 152,5; prontidão 4 mantém; perda de 35% tira uma série (5 → 4).
 > Pergunta provável: "e o volumeFactor da fase, não entra?" Resposta honesta: ainda não. O fator é relativo ao volume base do bloco, não à semana anterior — aplicar na semana passada cortaria volume em cascata. Decidir a base do bloco é um dos desafios para casa. Bom exemplo de regra de negócio que só aparece quando as peças se juntam.
 > Pergunta provável: "stream().toList() funciona no 21?" Sim, existe desde o Java 16.
 
@@ -1256,7 +1256,7 @@ public List<Prescription> planFor(
 // rpe <= 7 && velocityLoss > 30
 ```
 
-> **Notas:** O QUE ESTE SLIDE QUER DIZER: o gabarito da rodada 6. À esquerda, a fixture da classe de teste: o fake (registro de treinos em memória), o motor real e o dummy (aviso ao treinador que falha se for chamado), recriados antes de cada teste pelo @BeforeEach; dentro do teste, o stub do calendário. À direita, o código de produção que esses testes guiaram: buscar o treino, avisar em caso de conflito e delegar ao motor. O spy e o mock desta rodada estão no slide "Verificar estado ou comportamento". No repositório: WeeklyPlanServiceTest.java, InMemoryTrainingLog.java e SpyCoachNotifier.java, tag rodada-6-colaboradores.
+> **Notas:** O QUE ESTE SLIDE QUER DIZER: o gabarito da rodada 6. À esquerda, a fixture da classe de teste: o fake (registro de treinos em memória), o motor real e o dummy (aviso ao treinador que falha se for chamado), recriados antes de cada teste pelo @BeforeEach; dentro do teste, o stub do calendário. À direita, o código de produção que esses testes guiaram: buscar o treino, avisar em caso de conflito e delegar ao motor. O spy e o mock desta rodada estão no slide "Verificar estado ou comportamento". No repositório: WeeklyPlanServiceTest.java, InMemoryTrainingLog.java e SpyCoachNotifier.java, branch aula-tdd-6.
 > COMO CONDUZIR: checkpoint: quatro testes verdes (fake+stub+dummy, stub da semana da prova, spy, mock) e a turma sabe dizer, para cada colaborador, qual dublê usou e por quê. Pergunta final: "algum teste desta rodada usa dublê do SUT?" Resposta: não; o WeeklyPlanService é sempre real. Isso responde à dúvida do fake it: dublê substitui o que o SUT usa, nunca o SUT.
 
 ### 42. Pausa: olhe as fronteiras

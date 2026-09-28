@@ -4,7 +4,7 @@ Plano da aula de 2 horas. O texto completo de cada slide, com as notas do aprese
 
 ## Antes da aula
 
-- [ ] Projeto clonado e `mvn test` verde em todas as máquinas, na tag `inicio`
+- [ ] Projeto clonado e `mvn test` verde em todas as máquinas, na branch `aula-tdd-beginning`
 - [ ] Timer visível de 5 minutos (troca de piloto)
 - [ ] `TEST-LIST.md` aberto num lugar que todos veem
 - [ ] Conferir versões do JUnit, AssertJ, jqwik e PIT no `pom.xml`
@@ -33,17 +33,17 @@ Se atrasar: a parte de robustez vira só a demonstração de mutação (5 min) e
 
 ## Dojo · 60 minutos
 
-Cada rodada tem um slide de tarefa e um de **estado esperado**. Só mostre o estado esperado quando a turma chegar lá ou se a rodada travar. Se o tempo acabar, faça checkout da tag da rodada e siga.
+Cada rodada tem um slide de tarefa e um de **estado esperado**. Só mostre o estado esperado quando a turma chegar lá ou se a rodada travar. Se o tempo acabar, troque para a branch da rodada e siga.
 
 | Rodada | Tempo | Entrega | Checkpoint | Tag |
 |---|---|---|---|---|
-| 1 · Planejamento | 8 min | `TEST-LIST.md` completo | A turma concorda com a ordem | `inicio` |
-| 2 · Anilhas | 9 min | `Plates` + 3 testes | Fake it → triangulação → genérico | `rodada-2-anilhas` |
-| 3 · RPE | 11 min | `RpeRule`, `Loads`, teste parametrizado | O bug do `double` apareceu e foi corrigido | `rodada-3-rpe` |
-| 4 · Fadiga | 8 + 2 min | `FatigueRule`, `ReadinessRule` | Teste da borda de 30% | `rodada-4-fadiga` |
-| 5 · Fases | 8 min | `Phase` selada + switch | Terra fora da semana da prova | `rodada-5-fases` |
-| 6 · Colaboradores | 10 min | `WeeklyPlanService` e os 5 dublês | Nenhum dublê do SUT | `rodada-6-colaboradores` |
-| Ciclo primário | 4 min | Revisão das fronteiras | Regras sem JUnit, UI ou banco | `rodada-6-colaboradores` |
+| 1 · Planejamento | 8 min | `TEST-LIST.md` completo | A turma concorda com a ordem | `aula-tdd-1` |
+| 2 · Anilhas | 9 min | `Plates` + 3 testes | Fake it → triangulação → genérico | `aula-tdd-2` |
+| 3 · RPE | 11 min | `RpeRule`, `Loads`, teste parametrizado | O bug do `double` apareceu e foi corrigido | `aula-tdd-3` |
+| 4 · Fadiga | 8 + 2 min | `FatigueRule`, `ReadinessRule` | Teste da borda de 30% | `aula-tdd-4` |
+| 5 · Fases | 8 min | `Phase` selada + switch | Terra fora da semana da prova | `aula-tdd-5` |
+| 6 · Colaboradores | 10 min | `WeeklyPlanService` e os 5 dublês | Nenhum dublê do SUT | `aula-tdd-6` |
+| Ciclo primário | 4 min | Revisão das fronteiras | Regras sem JUnit, UI ou banco | `aula-tdd-6` |
 
 ### Rodada 1 · Planejamento (8 min)
 
@@ -121,7 +121,7 @@ Entregue o esqueleto de `Phase` pronto (records e switch); o foco é o comportam
 
 ### Rodada 6 · Colaboradores (10 min)
 
-Antes: cole o `RuleBasedEngine` pronto (tag `motor`) e entregue as interfaces `TrainingLog`, `MeetCalendar` e `CoachNotifier`. Vocabulário em [dubles-de-teste.md](dubles-de-teste.md).
+Antes: cole o `RuleBasedEngine` pronto (1º commit da branch `aula-tdd-6`) e entregue as interfaces `TrainingLog`, `MeetCalendar` e `CoachNotifier`. Vocabulário em [dubles-de-teste.md](dubles-de-teste.md).
 
 1. `plansNextWeekFromLastWeekAndMeetDate`: **fake** (`InMemoryTrainingLog`), **stub** (`athlete -> 5`), **dummy** (notifier que lança erro) e o motor **real**.
 2. `meetWeekFromCalendarDropsHeavyDeadlift`: só troca o stub para 1.
