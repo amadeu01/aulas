@@ -34,12 +34,12 @@ Marque `[x]` a cada teste verde. Caso novo que aparecer vai para a lista, não d
 - [x] meet week drops heavy deadlift
 
 ## WeeklyPlanService (collaborators and test doubles)
-- [ ] conflict: easy RPE + velocity loss > 30%
-- [ ] no conflict: target RPE + velocity loss > 30%
-- [ ] plans from last week (fake) and weeks to meet (stub), notifier unused (dummy)
-- [ ] meet week from calendar drops heavy deadlift (stub)
-- [ ] conflicting signals alert the coach (spy)
-- [ ] conflicting signals alert the coach (mock)
+- [x] conflict: easy RPE + velocity loss > 30%
+- [x] no conflict: target RPE + velocity loss > 30%
+- [x] plans from last week (fake) and weeks to meet (stub), notifier unused (dummy)
+- [x] meet week from calendar drops heavy deadlift (stub)
+- [x] conflicting signals alert the coach (spy)
+- [x] conflicting signals alert the coach (mock)
 
 ## Robustness
 - [ ] property: roundDown stays within one plate
