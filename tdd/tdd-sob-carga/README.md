@@ -10,7 +10,7 @@ A aula ensina a pegar uma regra de produto ambígua, transformá-la em exemplos 
 - **Ferramentas:** JUnit 5, AssertJ, Mockito, jqwik (testes de propriedade) e PIT (testes de mutação)
 - **Base teórica:** "The Cycles of TDD" (Robert C. Martin, 2014), *Clean Code*, *The Clean Coder*, *Clean Craftsmanship*, Kent Beck, Martin Fowler (fixture e dublês de teste), *Pragmatic Unit Testing in Java with JUnit* (Given/When/Then, Right-BICEP, ZOM) e Deitel. Veja [docs/referencias.md](docs/referencias.md)
 
-Convenção da aula: **código, nomes de testes e comentários em inglês**; slides, conversa e documentação em português.
+Convenção da aula: **código, nomes de testes e comentários em inglês**; slides, conversa e documentação em português. A exceção são os comentários acima de cada teste ("O que testa" e "Como"), em português, para quem está aprendendo.
 
 ## Como rodar
 

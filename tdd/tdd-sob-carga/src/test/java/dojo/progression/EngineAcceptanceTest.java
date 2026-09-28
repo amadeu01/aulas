@@ -12,6 +12,8 @@ class EngineAcceptanceTest {
 
   private final ProgressionEngine engine = new RuleBasedEngine();
 
+  // O que testa: ZOM, o caso "zero". Sem treino na semana passada, o plano vem vazio.
+  // Como: WeekLog com lista vazia; o motor não pode inventar exercício nem quebrar.
   @Test
   void emptyWeekGivesEmptyPlan() { // ZOM: zero
     var next = engine.nextWeek(new WeekLog(List.of(), 4), 5);
@@ -19,6 +21,9 @@ class EngineAcceptanceTest {
     assertThat(next).isEmpty();
   }
 
+  // O que testa: o ticket PROG-42 de ponta a ponta, com as regras combinadas no motor.
+  // Como: ZOM "um", um exercício só. RPE 8 sobe 2,5% e arredonda (152,5 kg), prontidão 4 não
+  // corta e 35% de perda tira uma série (5 -> 4). Conferimos a prescrição inteira de uma vez.
   @Test
   void targetSessionWithHighFatigueRaisesLoadAndDropsOneSet() { // ZOM: one
     // given
@@ -32,6 +37,9 @@ class EngineAcceptanceTest {
     assertThat(next).containsExactly(new Prescription(SQUAT, 152.5, 4, 3));
   }
 
+  // O que testa: ZOM "muitos". Com dois exercícios na semana da prova, o motor tira só o terra.
+  // Como: agachamento e terra entram, com 1 semana até a prova; extracting pega só o movimento
+  // de cada prescrição e conferimos que sobrou apenas SQUAT.
   @Test
   void meetWeekDropsHeavyDeadlift() { // ZOM: many
     var last = new WeekLog(List.of(

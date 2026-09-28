@@ -36,6 +36,11 @@ class WeeklyPlanServiceTest {
     return new WeekLog(List.of(new SetLog(SQUAT, 150, 5, 3, rpe, velocityLossPct)), 4);
   }
 
+  // O que testa: o serviço junta as bordas e o motor: busca a semana passada, pergunta quantas
+  // semanas faltam para a prova e devolve o plano.
+  // Como: o FAKE (InMemoryTrainingLog) guarda o treino, o STUB (athlete -> 5) responde pelo
+  // calendário e o DUMMY do treinador falha se for chamado (sem conflito, ninguém é avisado).
+  // Verificação de estado: conferimos o plano devolvido.
   @Test
   void plansNextWeekFromLastWeekAndMeetDate() {
     // given (Fowler: setup, the fixture)
@@ -50,6 +55,9 @@ class WeeklyPlanServiceTest {
     assertThat(plan).containsExactly(new Prescription(SQUAT, 152.5, 4, 3));
   }
 
+  // O que testa: a resposta do calendário chega até o motor. Se o calendário diz "semana da
+  // prova", o terra sai do plano.
+  // Como: STUB que responde 1 semana; conferimos que só o agachamento ficou.
   @Test
   void meetWeekFromCalendarDropsHeavyDeadlift() {
     log.record("ana", new WeekLog(List.of(
@@ -63,6 +71,9 @@ class WeeklyPlanServiceTest {
     assertThat(plan).extracting(Prescription::lift).containsExactly(SQUAT);
   }
 
+  // O que testa: com sinais conflitantes (RPE 7 e 35% de perda), o treinador é avisado.
+  // Como: SPY. O SpyCoachNotifier só grava os avisos numa lista; depois da chamada, olhamos a
+  // lista (verificação de estado).
   @Test
   void conflictingSignalsAlertTheCoach_withSpy() {
     log.record("ana", week(7.0, 35.0));
@@ -75,6 +86,10 @@ class WeeklyPlanServiceTest {
     assertThat(spy.alerts).containsExactly("ana: conflicting signals on SQUAT");
   }
 
+  // O que testa: o mesmo comportamento do teste anterior, agora com um MOCK do Mockito.
+  // Como: verify confere que alert foi chamado com esses argumentos, e verifyNoMoreInteractions
+  // que não houve nenhuma outra chamada (verificação de comportamento). Compare com o spy: o
+  // mock fica preso à forma exata da chamada.
   @Test
   void conflictingSignalsAlertTheCoach_withMock() {
     log.record("ana", week(7.0, 35.0));
