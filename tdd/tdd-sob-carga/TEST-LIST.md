@@ -10,10 +10,10 @@ Marque `[x]` a cada teste verde. Caso novo que aparecer vai para a lista, não d
 - [x] rejectsNegativeLoad
 
 ## RpeRule (target RPE 8)
-- [ ] rpe7:  +5%   (100 -> 105.0)
-- [ ] rpe8:  +2.5% (100 -> 102.5)
-- [ ] rpe9:  keeps (100 -> 100.0)
-- [ ] rpe10: -5%   (100 ->  95.0)
+- [x] rpe7:  +5%   (100 -> 105.0)
+- [x] rpe8:  +2.5% (100 -> 102.5)
+- [x] rpe9:  keeps (100 -> 100.0)
+- [x] rpe10: -5%   (100 ->  95.0)
 
 ## FatigueRule / ReadinessRule
 - [ ] velocityLoss 35%: sets 5 -> 4
