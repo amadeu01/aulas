@@ -2,7 +2,7 @@ package dojo.progression;
 
 /**
  * Training phase by weeks left until the meet.
- * Sealed + records + exhaustive switch: all final in Java 21.
+ * Sealed + records + exhaustive switch, with unnamed patterns (_) from Java 22+.
  */
 sealed interface Phase {
   record Accumulation()    implements Phase {}
@@ -20,11 +20,10 @@ sealed interface Phase {
   /** Volume relative to the accumulation block. */
   static double volumeFactor(Phase p) {
     return switch (p) {
-      case Accumulation a    -> 1.00;
-      case Intensification i -> 0.85;
-      case Taper t           -> 0.70;
-      case MeetWeek m        -> 0.50;
-      // Java 22+: case Taper _ -> 0.70;
+      case Accumulation _    -> 1.00;
+      case Intensification _ -> 0.85;
+      case Taper _           -> 0.70;
+      case MeetWeek _        -> 0.50;
     };
   }
 

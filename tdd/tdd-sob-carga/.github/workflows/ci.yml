@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ '21', '24' ]
+        java: [ '24', '25' ]
     name: mvn test (JDK ${{ matrix.java }})
     steps:
       - uses: actions/checkout@v4

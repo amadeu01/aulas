@@ -8,16 +8,16 @@
   <artifactId>tdd-sob-carga</artifactId>
   <version>1.0.0</version>
   <name>TDD sob carga</name>
-  <description>Coding dojo de TDD em Java 21/24: do pedido de produto ao código em produção.</description>
+  <description>Coding dojo de TDD em Java 24: do pedido de produto ao código em produção.</description>
 
   <properties>
-    <!-- Troque para 24 para rodar tudo no Java 24. Nada mais muda. -->
-    <maven.compiler.release>21</maven.compiler.release>
+    <!-- Java 24: compila com qualquer JDK 24 ou mais novo (25 LTS incluso). -->
+    <maven.compiler.release>24</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>5.11.4</junit.version>
     <assertj.version>3.27.3</assertj.version>
     <jqwik.version>1.9.2</jqwik.version>
-    <mockito.version>5.14.2</mockito.version>
+    <mockito.version>5.20.0</mockito.version>
     <pitest.version>1.17.4</pitest.version>
     <pitest.junit5.version>1.2.1</pitest.junit5.version>
   </properties>
@@ -92,6 +92,9 @@
           <targetTests>
             <param>dojo.progression.*</param>
           </targetTests>
+          <excludedClasses>
+            <param>dojo.progression.Main</param>
+          </excludedClasses>
           <excludedTestClasses>
             <param>dojo.progression.*Properties</param>
           </excludedTestClasses>

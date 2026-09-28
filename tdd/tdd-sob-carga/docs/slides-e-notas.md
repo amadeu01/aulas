@@ -8,14 +8,14 @@ Texto de cada slide, na ordem do deck, com as notas do apresentador. Gerado a pa
 
 ### 1. TDD sob carga
 
-Coding Dojo · Java 21 e 24 · Os ciclos do TDD, de Uncle Bob
+Coding Dojo · Java 24 · Os ciclos do TDD, de Uncle Bob
 
 Do pedido de produto ao código em produção, teste a teste
 
 Amadeu Cavalcante · 28/09/2026
 
 > **Notas:** O QUE ESTE SLIDE QUER DIZER: Capa. Apresente o tema em uma frase: vamos aprender a transformar um pedido de produto em testes, e os testes em código, sempre em passos pequenos. Java é só a linguagem; o assunto é o método.
-> COMO CONDUZIR: Boas-vindas (2 min). A proposta: aprender TDD fazendo, não assistindo. O foco é transformar o que o produto pede em testes que guiam o código e provam que a lógica é robusta. O domínio (progressão de cargas no powerlifting) é só uma brincadeira: tem números, limites e regras que brigam — como qualquer ticket real. O código compila em Java 21 (LTS); quando algo só existir no 24, eu aviso. Não é uma aula de Java: é uma aula de como pensar em passos pequenos guiados por testes.
+> COMO CONDUZIR: Boas-vindas (2 min). A proposta: aprender TDD fazendo, não assistindo. O foco é transformar o que o produto pede em testes que guiam o código e provam que a lógica é robusta. O domínio (progressão de cargas no powerlifting) é só uma brincadeira: tem números, limites e regras que brigam — como qualquer ticket real. O código é Java 24; quando um recurso não existir no 21, eu aviso. Não é uma aula de Java: é uma aula de como pensar em passos pequenos guiados por testes.
 
 ### 2. Como vamos usar o tempo
 
@@ -31,7 +31,7 @@ Aquecimento e acordos do dojo
 
 **Ciclos do TDD**
 
-Uncle Bob, Java 21/24 e o setup
+Uncle Bob, Java 24 e o setup
 
 0:25 · 15 min
 
@@ -100,7 +100,7 @@ Pergunta a qualquer hora. Sugere código só com a barra verde.
 
 ---
 
-## Os ciclos do TDD segundo Uncle Bob, as três formas de ficar verde e o setup Java 21/24
+## Os ciclos do TDD segundo Uncle Bob, as três formas de ficar verde e o setup Java 24
 
 ### 5. Os ciclos do TDD
 
@@ -341,11 +341,11 @@ Regra da aula: tudo que é obrigatório compila em Java 21. O que for só do 24 
 
 ### 13. Setup em 2 minutos
 
-Maven · Java 21 ou 24 · JUnit 5 + AssertJ
+Maven · Java 24 · JUnit 5 + AssertJ
 
 ```
 <properties>
-  <maven.compiler.release>21</maven.compiler.release>
+  <maven.compiler.release>24</maven.compiler.release>
 </properties>
 
 <dependency>
@@ -375,8 +375,8 @@ class PlatesTest {
 // Then the environment is ready.
 ```
 
-> **Notas:** O QUE ESTE SLIDE QUER DIZER: O mínimo para começar: o pom com Java 21 (ou 24), JUnit 5 e AssertJ, e um teste bobo de 1 + 1 só para provar que o ambiente funciona. Se esse teste não fica verde, o problema é de ambiente, não de TDD; resolva antes do dojo.
-> COMO CONDUZIR: Troque 21 por 24 no maven.compiler.release para rodar no Java 24; nada mais muda. Confira antes da aula se há versões mais novas do JUnit e do AssertJ (qualquer 5.x serve). O teste "1 + 1" é o teste de fumaça: prova que o ambiente roda antes de começarmos. Tenha o projeto já clonado em todas as máquinas — setup não deve comer tempo do dojo.
+> **Notas:** O QUE ESTE SLIDE QUER DIZER: O mínimo para começar: o pom com Java 24, JUnit 5 e AssertJ, e um teste bobo de 1 + 1 só para provar que o ambiente funciona. Se esse teste não fica verde, o problema é de ambiente, não de TDD; resolva antes do dojo.
+> COMO CONDUZIR: O projeto usa --release 24: qualquer JDK 24 ou mais novo roda (o 25 LTS também). No IntelliJ, abra a pasta aulas e escolha um JDK 24+ como SDK do projeto. Confira antes da aula se há versões mais novas do JUnit e do AssertJ (qualquer 5.x serve). O teste "1 + 1" é o teste de fumaça: prova que o ambiente roda antes de começarmos. Tenha o projeto já clonado em todas as máquinas — setup não deve comer tempo do dojo.
 
 ---
 
@@ -1082,15 +1082,15 @@ sealed interface Phase {
 }
 static double volumeFactor(Phase p) {
   return switch (p) {
-    case Accumulation a    -> 1.00;
-    case Intensification i -> 0.85;
-    case Taper t           -> 0.70;
-    case MeetWeek m        -> 0.50;
-  };  // Java 22+: case Taper _ -> 0.70;
+    case Accumulation _    -> 1.00;
+    case Intensification _ -> 0.85;
+    case Taper _           -> 0.70;
+    case MeetWeek _        -> 0.50;
+  };  // _ = unnamed pattern (Java 22+)
 }
 ```
 
-> **Notas:** O QUE ESTE SLIDE QUER DIZER: Rodada 5: as fases por prazo até a competição, usando sealed interface e switch do Java 21. O compilador garante que toda fase foi tratada: se alguém criar uma fase nova, o código para de compilar até ela ser tratada.
+> **Notas:** O QUE ESTE SLIDE QUER DIZER: Rodada 5: as fases por prazo até a competição, usando sealed interface e switch com padrões sem nome (_). O compilador garante que toda fase foi tratada: se alguém criar uma fase nova, o código para de compilar até ela ser tratada.
 > COMO CONDUZIR: PLANO (9 min, 2 pilotos). Aqui você entrega o esqueleto da direita pronto (colar no projeto), porque o foco é o comportamento, não digitar records.
 > Passo 1: taperVolumeIs70Percent. Vermelho porque Phase.of ainda não existe → fake it: return new Taper(). Verde (o switch já está pronto).
 > Passo 2: teste parametrizado de Phase.of com 9, 8, 3, 2, 1 semanas, uma linha por vez. As bordas 8 e 3 são onde erram.
@@ -1100,12 +1100,12 @@ static double volumeFactor(Phase p) {
 > 
 > PERGUNTAS E RESPOSTAS.
 > "Por que sealed e não enum?" → Enum resolveria hoje. Sealed + record deixa cada fase carregar dados próprios no futuro (ex.: Taper(int daysOff)), e o switch continua exaustivo.
-> "Funciona em Java 21?" → Sim: sealed, records e switch com patterns são finais no 21. Só o _ (variável sem nome) precisa do 22+, ou de --enable-preview no 21.
+> "Que _ é esse no case?" → Padrão sem nome (JEP 456, final desde o 22): só importa o tipo. No Java 21 seria preview; lá, escreva case Taper t ->.
 > "Por que não um default no switch?" → O default mataria a checagem de exaustividade: uma fase nova passaria sem aviso.
 
 ### 38. Fases e a exceção do terra
 
-Rodada 5 · estado esperado · compila em Java 21
+Rodada 5 · estado esperado · Java 24
 
 ```java
 @ParameterizedTest

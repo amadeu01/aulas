@@ -15,7 +15,7 @@ Plano da aula de 2 horas. O texto completo de cada slide, com as notas do aprese
 | Horário | Bloco | Objetivo |
 |---|---|---|
 | 0:00 · 10 min | Abertura | Aquecimento, acordos do dojo, explicar que powerlifting é só pretexto |
-| 0:10 · 15 min | Ciclos do TDD | Os 4 ciclos de Uncle Bob (nano, micro, milli, primário), dois caminhos até o verde, Java 21/24 e setup |
+| 0:10 · 15 min | Ciclos do TDD | Os 4 ciclos de Uncle Bob (nano, micro, milli, primário), dois caminhos até o verde, Java 24 e setup |
 | 0:25 · 15 min | Do pedido ao teste | Ticket ambíguo, perguntas ao produto, critérios, arquitetura, vocabulário de testes (Fowler) e entrada/saída (given/when/then) |
 | 0:40 · 60 min | Dojo | Planejar os testes e 5 rodadas de código |
 | 1:40 · 10 min | Robustez | Bordas, inválidos, propriedades, mutação e rastreabilidade |
@@ -115,7 +115,8 @@ Entregue o esqueleto de `Phase` pronto (records e switch); o foco é o comportam
 | Pergunta provável | Resposta |
 |---|---|
 | Por que `sealed` e não `enum`? | Cada fase pode carregar dados próprios no futuro, e o switch continua exaustivo. |
-| Funciona em Java 21? | Sim. Só o `_` precisa de Java 22+ (ou `--enable-preview` no 21). |
+| Que `_` é esse no `case`? | Padrão sem nome (JEP 456, final desde o Java 22): só importa o tipo, não a variável. |
+| Funciona em Java 21? | Não como está: o `_` é preview no 21. Com `case Taper t ->` compila. |
 | Por que não um `default` no switch? | Mataria a checagem de exaustividade. |
 
 ### Rodada 6 · Colaboradores (10 min)
