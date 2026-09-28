@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Main (tdd-sob-carga)" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="dojo.progression.Main" />
+    <module name="tdd-sob-carga" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

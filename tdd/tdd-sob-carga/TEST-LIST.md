@@ -29,9 +29,9 @@ Marque `[x]` a cada teste verde. Caso novo que aparecer vai para a lista, não d
 - [x] 1 week: MeetWeek (0.50), no heavy deadlift
 
 ## Engine (acceptance, ticket PROG-42)
-- [ ] zero sets: empty plan (ZOM)
-- [ ] RPE 8 + 35% velocity loss: 150 x 5 -> 152.5 x 4
-- [ ] meet week drops heavy deadlift
+- [x] zero sets: empty plan (ZOM)
+- [x] RPE 8 + 35% velocity loss: 150 x 5 -> 152.5 x 4
+- [x] meet week drops heavy deadlift
 
 ## WeeklyPlanService (collaborators and test doubles)
 - [ ] conflict: easy RPE + velocity loss > 30%
