@@ -23,10 +23,10 @@ Marque `[x]` a cada teste verde. Caso novo que aparecer vai para a lista, não d
 - [x] readiness 4: load unchanged
 
 ## Phase
-- [ ] 9 weeks: Accumulation (1.00)
-- [ ] 8..3 weeks: Intensification (0.85)
-- [ ] 2 weeks: Taper (0.70)
-- [ ] 1 week: MeetWeek (0.50), no heavy deadlift
+- [x] 9 weeks: Accumulation (1.00)
+- [x] 8..3 weeks: Intensification (0.85)
+- [x] 2 weeks: Taper (0.70)
+- [x] 1 week: MeetWeek (0.50), no heavy deadlift
 
 ## Engine (acceptance, ticket PROG-42)
 - [ ] zero sets: empty plan (ZOM)
