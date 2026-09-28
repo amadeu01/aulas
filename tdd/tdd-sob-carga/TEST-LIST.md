@@ -5,9 +5,9 @@ A lista é um plano, não código: um teste vermelho por vez (lei 2 do TDD).
 Marque `[x]` a cada teste verde. Caso novo que aparecer vai para a lista, não direto para o código.
 
 ## Plates
-- [ ] roundsDown: 101.2 -> 100.0
-- [ ] keepsExactMultiple: 102.5 -> 102.5
-- [ ] rejectsNegativeLoad
+- [x] roundsDown: 101.2 -> 100.0
+- [x] keepsExactMultiple: 102.5 -> 102.5
+- [x] rejectsNegativeLoad
 
 ## RpeRule (target RPE 8)
 - [ ] rpe7:  +5%   (100 -> 105.0)
