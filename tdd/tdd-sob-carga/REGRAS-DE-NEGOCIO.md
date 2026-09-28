@@ -22,7 +22,7 @@ Nenhum desses critérios é testável como está: o que é "fácil"? Aumenta qua
 | **Perda de velocidade** | Quanto a barra ficou mais lenta do início ao fim da série, em %. Mede a fadiga. |
 | **Prontidão** | Nota de 1 a 5 que o atleta dá antes do treino. |
 | **Semanas até a prova** | Quantas semanas faltam para a competição. |
-| **Anilha** | O menor incremento possível na barra: 2,5 kg. |
+| **Anilha** | Disco de peso colocado na barra. A menor anilha da academia tem 1,25 kg; como vai uma de cada lado, a carga só muda de 2,5 em 2,5 kg. |
 
 ## Critérios de aceitação combinados com o produto
 
@@ -34,9 +34,51 @@ Nenhum desses critérios é testável como está: o que é "fácil"? Aumenta qua
 | Treino no limite | RPE ≥ 9,5 | carga −5% | 100 kg → 95 kg |
 | Atleta cansado | perda de velocidade **acima** de 30% | −1 série (nunca menos que 1) | 5 séries → 4; com exatamente 30%, continuam 5 |
 | Atleta cansado | prontidão ≤ 2 | carga −5% | 150 kg → 142,5 kg |
-| (regra técnica) | sempre | arredondar **para baixo** a múltiplos de 2,5 kg | 101,2 kg → 100 kg; 102,5 kg → 102,5 kg; carga negativa é erro |
+| (regra técnica) | sempre | arredondar **para baixo** a múltiplos de 2,5 kg (detalhes na próxima seção) | 101,2 kg → 100 kg |
 
 Repare: "atleta cansado" virou **duas** regras. E a regra técnica ninguém pediu, mas o time precisa: ninguém coloca 101,2 kg numa barra.
+
+## Arredondamento para as anilhas
+
+### De onde veio
+
+O ticket não fala de arredondamento. A pergunta apareceu quando o time tentou escrever o exemplo do treino no alvo: "RPE 8 sobe 2,5%, então 150 kg viram 150 × 1,025 = **153,75 kg**. Dá para montar 153,75 kg numa barra?"
+
+Não dá. A barra só recebe anilhas, e a menor tem 1,25 kg. Como uma vai de cada lado, a carga só anda de **2,5 em 2,5 kg**: 150, 152,5, 155... O time levou ao produto a pergunta "com que precisão sugerimos a carga?" (checklist em [docs/do-pedido-ao-teste.md](docs/do-pedido-ao-teste.md)), e a resposta virou esta regra.
+
+### A regra
+
+1. Toda carga sugerida é arredondada **para baixo**, até o múltiplo de 2,5 kg mais próximo.
+2. Uma carga que já é múltiplo de 2,5 kg **não muda**.
+3. Carga **negativa** é dado errado: é rejeitada com erro, não arredondada.
+4. O arredondamento acontece **depois de cada ajuste percentual** (RPE, prontidão).
+
+### Por que para baixo, e não para o mais próximo
+
+Decisão de produto, por segurança: o app **nunca sugere mais peso do que a conta deu**. Se arredondasse para o mais próximo, 104,9 kg virariam 105 kg, acima do que a regra calculou. Para baixo, o erro máximo é menos de uma anilha (2,5 kg), sempre a favor do atleta.
+
+### Exemplos
+
+| Carga calculada | Carga sugerida | O que o exemplo mostra |
+|---|---|---|
+| 101,2 kg | **100 kg** | Caso típico: 100 é o múltiplo de 2,5 logo abaixo |
+| 104,9 kg | **102,5 kg** | Mesmo quase chegando a 105, desce: nunca arredonda para cima |
+| 102,5 kg | **102,5 kg** | Borda: já é múltiplo, fica igual |
+| 153,75 kg | **152,5 kg** | Caso real do ticket: RPE 8 sobre 150 kg (150 × 1,025) |
+| −1 kg | **erro** | Entrada inválida: carga negativa não é treino |
+
+Em forma de conta: carga sugerida = maior múltiplo de 2,5 que não passa da carga calculada.
+
+### Onde vira teste
+
+| Exemplo | Teste |
+|---|---|
+| 101,2 → 100 | `PlatesTest.roundsDownToNearestMultipleOf2_5` |
+| 104,9 → 102,5 | Segundo exemplo da triangulação na rodada 2 (derruba o `return 100.0`); pode ser apagado depois |
+| 102,5 → 102,5 | `PlatesTest.keepsExactMultiple` |
+| −1 → erro | `PlatesTest.rejectsNegativeLoad` |
+| 153,75 → 152,5 | `EngineAcceptanceTest.targetSessionWithHighFatigueRaisesLoadAndDropsOneSet` |
+| Qualquer carga: nunca passa da calculada e erra menos de 2,5 kg | `PlatesProperties.roundDownStaysWithinOnePlate` |
 
 ## Perto da competição
 

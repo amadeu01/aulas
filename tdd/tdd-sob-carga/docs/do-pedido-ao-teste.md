@@ -54,7 +54,7 @@ Leve estas perguntas para o refinamento do seu time.
 | Treino no limite | RPE ≥ 9,5 | carga −5% |
 | Atleta cansado | perda de velocidade acima de 30% | −1 série |
 | Atleta cansado | prontidão ≤ 2 (de 1 a 5) | carga −5% |
-| (regra técnica) | sempre | para baixo, múltiplo de 2,5 kg |
+| (regra técnica) | sempre | para baixo, múltiplo de 2,5 kg ([detalhes](../REGRAS-DE-NEGOCIO.md#arredondamento-para-as-anilhas)) |
 | Perto da competição | 9+ semanas / 8 a 3 / 2 / 1 | volume 100% / 85% / 70% / 50%, terra pesado sai na semana da prova |
 
 Repare: "atleta cansado" virou duas regras. Uma frase de produto pode esconder vários critérios. E a última linha técnica ninguém pediu, mas o time precisa; regra técnica também vira teste.

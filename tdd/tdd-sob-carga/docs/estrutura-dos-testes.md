@@ -36,7 +36,7 @@ Nas regras puras (`Plates`, `RpeRule`, `FatigueRule`, `Phase`), a tabela de exem
 
 ## De onde vem cada exemplo
 
-Cada teste precisa de um motivo. No arredondamento:
+Cada teste precisa de um motivo. No arredondamento (regra completa em [REGRAS-DE-NEGOCIO.md](../REGRAS-DE-NEGOCIO.md#arredondamento-para-as-anilhas)):
 
 - **101,2 → 100:** o caso típico, uma carga "quebrada".
 - **104,9 → 102,5:** o segundo exemplo da triangulação. Foi escolhido para ter uma resposta **diferente** de 100 e assim derrubar o `return 100.0` do fake it. Qualquer carga entre 102,5 e 104,99 serviria.
