@@ -1,0 +1,30 @@
+name: tdd-sob-carga
+
+on:
+  push:
+    paths:
+      - 'tdd/tdd-sob-carga/**'
+      - '.github/workflows/tdd-sob-carga.yml'
+  pull_request:
+    paths:
+      - 'tdd/tdd-sob-carga/**'
+      - '.github/workflows/tdd-sob-carga.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '24', '25' ]
+    name: mvn test (JDK ${{ matrix.java }})
+    defaults:
+      run:
+        working-directory: tdd/tdd-sob-carga
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+      - run: ../../mvnw -B test
