@@ -16,11 +16,11 @@ Marque `[x]` a cada teste verde. Caso novo que aparecer vai para a lista, não d
 - [x] rpe10: -5%   (100 ->  95.0)
 
 ## FatigueRule / ReadinessRule
-- [ ] velocityLoss 35%: sets 5 -> 4
-- [ ] velocityLoss 30%: sets stay 5
-- [ ] never below one set
-- [ ] readiness 2: load -5%
-- [ ] readiness 4: load unchanged
+- [x] velocityLoss 35%: sets 5 -> 4
+- [x] velocityLoss 30%: sets stay 5
+- [x] never below one set
+- [x] readiness 2: load -5%
+- [x] readiness 4: load unchanged
 
 ## Phase
 - [ ] 9 weeks: Accumulation (1.00)
